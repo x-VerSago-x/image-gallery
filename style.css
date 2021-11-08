@@ -6,7 +6,7 @@ h1 {
   text-align: center;
 }
 .container {
-  /* background: rgba(0, 0, 0, 0.5); */
+  border: 1px solid rgb(102, 102, 101);
   position: relative;
   width: 480px;
   height: 640px;
@@ -62,21 +62,23 @@ button {
   background: rgba(0, 0, 0, 0);
 }
 .thumb-bar {
-  background-color: #00f;
+  /* background-color: #00f; */
   height: 25%;
   width: 100%;
-  border: 2px solid rgb(102, 102, 101);
+
   box-sizing: border-box;
 }
 .thumb-bar img {
+  /* border: 1px solid rgb(102, 102, 101); */
+  box-sizing: border-box;
   width: 20%;
   height: 100%;
   cursor: pointer;
-  transition: opacity 0.5s;
+  transition: all 0.3s;
 }
 .thumb-bar img:hover {
-  opacity: 0.7;
+  opacity: 0.5;
 }
 .select {
-  opacity: 0.7;
+  border: 5px solid #0f0;
 }
