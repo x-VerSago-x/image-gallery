@@ -5,7 +5,7 @@ h1 {
   text-align: center;
 }
 .container {
-  background: rgba(0, 0, 0, 0.5);
+  /* background: rgba(0, 0, 0, 0.5); */
   position: relative;
   width: 480px;
   height: 640px;
@@ -57,6 +57,7 @@ button {
   background: rgba(0, 0, 0, 1);
 }
 .thumb-bar {
+  background-color: #00f;
   height: 25%;
   width: 100%;
   box-sizing: border-box;
@@ -64,6 +65,9 @@ button {
 .thumb-bar img {
   width: 20%;
   height: 100%;
+  cursor: pointer;
+  transition: opacity 0.5s;
 }
 .thumb-bar img:hover {
+  opacity: 0.7;
 }
