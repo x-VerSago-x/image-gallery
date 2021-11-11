@@ -2,11 +2,9 @@ const displayedImage = document.querySelector('.displayed-img')
 const thumbBar = document.querySelector('.thumb-bar')
 const dark = document.querySelector('.dark')
 let transparent = 0
-btn = document.querySelector('button')
 const overlay = document.querySelector('.overlay')
 const next = document.querySelector('.next')
 const prev = document.querySelector('.prev')
-
 const pathImages = [
   'images/pic1.jpg',
   'images/pic2.jpg',
@@ -14,6 +12,7 @@ const pathImages = [
   'images/pic4.jpg',
   'images/pic5.jpg',
 ]
+
 // Функция которая добавляет класс
 function setSelect(obj) {
   let select = document.querySelector('.select')
@@ -27,7 +26,7 @@ function setSelect(obj) {
 }
 
 //уменьшение яркости
-function lowerBrightness() {
+function SetLowerBrightness() {
   transparent++
   if (transparent === 10) {
     overlay.style.backgroundColor = 'rgba(0,0,0,1)'
@@ -40,20 +39,20 @@ function lowerBrightness() {
 }
 //Добавление слушателя объекты панели навигации(Боковые)
 next.addEventListener('click', () => {
-  const index = pathImages.indexOf(displayedImage.getAttribute('src'))
-  if (index === pathImages.length - 1) {
+  const indexImg = pathImages.indexOf(displayedImage.getAttribute('src'))
+  if (indexImg === pathImages.length - 1) {
     setSelect(thumbBar.firstElementChild)
   } else {
-    setSelect(thumbBar.children[index + 1])
+    setSelect(thumbBar.children[indexImg + 1])
   }
 })
 
 prev.addEventListener('click', () => {
-  const index = pathImages.indexOf(displayedImage.getAttribute('src'))
-  if (index === 0) {
+  const indexImg = pathImages.indexOf(displayedImage.getAttribute('src'))
+  if (indexImg === 0) {
     setSelect(thumbBar.lastChild)
   } else {
-    setSelect(thumbBar.children[index - 1])
+    setSelect(thumbBar.children[indexImg - 1])
   }
 })
 
@@ -64,11 +63,10 @@ for (let i = 0; i <= pathImages.length - 1; i++) {
   thumbBar.appendChild(newImage)
 }
 
-//Установка слушателя для установки активной страницы
+//Установка слушателя на изображения бара и установки активной страницы по клику
 for (let i = 0; i <= thumbBar.children.length - 1; i++) {
   thumbBar.children[i].addEventListener('click', (e) => {
     setSelect(e.target)
   })
 }
-
-dark.addEventListener('click', lowerBrightness)
+dark.addEventListener('click', SetLowerBrightness)
