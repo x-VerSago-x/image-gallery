@@ -34,6 +34,9 @@ h1 {
   cursor: pointer;
 }
 .prev {
+  left: 0;
+}
+.next {
   right: 0;
 }
 p {
