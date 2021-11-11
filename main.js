@@ -25,19 +25,31 @@ function setSelect(obj) {
   }
   displayedImage.setAttribute('src', obj.getAttribute('src'))
 }
+
+//уменьшение яркости
+function lowerBrightness() {
+  transparent++
+  if (transparent === 10) {
+    overlay.style.backgroundColor = 'rgba(0,0,0,1)'
+  } else if (transparent > 10) {
+    transparent = 0
+    overlay.style.backgroundColor = 'rgba(0,0,0,0)'
+  } else {
+    overlay.style.backgroundColor = 'rgba(0,0,0,0.' + transparent + ')'
+  }
+}
 //Добавление слушателя объекты панели навигации(Боковые)
 next.addEventListener('click', () => {
   const index = pathImages.indexOf(displayedImage.getAttribute('src'))
-  console.log('test right panel - ' + index)
   if (index === pathImages.length - 1) {
-    setSelect(thumbBar.firstChild)
+    setSelect(thumbBar.firstElementChild)
   } else {
     setSelect(thumbBar.children[index + 1])
   }
 })
+
 prev.addEventListener('click', () => {
   const index = pathImages.indexOf(displayedImage.getAttribute('src'))
-  console.log('test left panel - ' + index)
   if (index === 0) {
     setSelect(thumbBar.lastChild)
   } else {
@@ -59,14 +71,4 @@ for (let i = 0; i <= thumbBar.children.length - 1; i++) {
   })
 }
 
-dark.addEventListener('click', () => {
-  transparent++
-  if (transparent === 10) {
-    overlay.style.backgroundColor = 'rgba(0,0,0,1)'
-  } else if (transparent > 10) {
-    transparent = 0
-    overlay.style.backgroundColor = 'rgba(0,0,0,0)'
-  } else {
-    overlay.style.backgroundColor = 'rgba(0,0,0,0.' + transparent + ')'
-  }
-})
+dark.addEventListener('click', lowerBrightness)
